@@ -11,6 +11,8 @@ public class BlogApplication {
 		SpringApplication.run(BlogApplication.class, args);
 		System.out.println("SPRING");
 	}
+
+
 }
 
 
