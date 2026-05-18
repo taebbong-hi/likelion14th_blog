@@ -10,6 +10,7 @@ import likelion14th.blog.dto.response.CommentResponse;
 import likelion14th.blog.service.ArticleService;
 import likelion14th.blog.service.CommentService;
 import lombok.RequiredArgsConstructor;
+import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -64,5 +65,12 @@ public class ArticleController {
         List<ArticleSummaryResponse> articleDetailResponses = articleService.getArticles();
 
         return ResponseEntity.ok(ApiResponse.success(200, "게시글 전체 조회에 성공하였습니다.", articleDetailResponses));
+    }
+
+    @GetMapping("/{articleId}/comments")
+    public ResponseEntity<ApiResponse<List<CommentResponse>>> addComment(@PathVariable Long articleId){
+        List<CommentResponse> commentResponses = commentService.getComments(articleId);
+
+        return ResponseEntity.ok(ApiResponse.success(200, "댓글 조회에 성공하였습니다.", commentResponses));
     }
 }
