@@ -15,6 +15,7 @@ public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "comment_id", nullable = false)
+    //@Column(nullable = false)로 해도 같은 snakecase로 저장됨
     private Long id;
 
     @Column(nullable = false)
