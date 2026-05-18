@@ -44,8 +44,10 @@ public class ArticleService {
     }
 
     @Transactional
-    public void deleteArticle(Long id){
+    public Void deleteArticle(Long id){
         articleRepository.deleteById(id);
+
+        return null;
     }
 
     @Transactional
@@ -55,7 +57,7 @@ public class ArticleService {
         List<ArticleSummaryResponse> articleResponse = articles.stream()
                 .map(ArticleSummaryResponse::from)
                 .toList();
-        
+
         return articleResponse;
     }
 }
