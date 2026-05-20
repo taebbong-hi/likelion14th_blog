@@ -1,5 +1,6 @@
 package likelion14th.blog.controller;
 
+import jakarta.validation.Valid;
 import likelion14th.blog.dto.request.ArticleRequest;
 import likelion14th.blog.dto.request.CommentRequest;
 import likelion14th.blog.dto.request.DeleteArticleRequest;
@@ -34,7 +35,7 @@ public class ArticleController {
     }
 
     @PostMapping()
-    public ResponseEntity<ApiResponse<ArticleDetailResponse>> addArticle(@RequestBody ArticleRequest request){
+    public ResponseEntity<ApiResponse<ArticleDetailResponse>> addArticle(@Valid @RequestBody ArticleRequest request){
         ArticleDetailResponse articleDetailResponse =
                 articleService.addArticle(request.getTitle(), request.getContent(), request.getAuthor(), request.getPassword());
         return ResponseEntity.status(HttpStatus.CREATED).body(ApiResponse.success(201, "게시글 생성에 성공하였습니다.", articleDetailResponse));
